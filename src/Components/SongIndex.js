@@ -10,9 +10,6 @@ const SongIndex = ({songName, releaseDate, coverArt}) => {
         setColor(prev => prev == "black" ? "blue" : "black")
     }
 
-    const createSong = (e) => {
-        songName.push()
-    }
 
 return(
     <>

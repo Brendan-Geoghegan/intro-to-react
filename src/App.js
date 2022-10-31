@@ -14,9 +14,9 @@ const App = () => {
     ])
 
     const createSong = (e) => {
-        console.log(e.target.songName)
+        console.log(e.target.songName.value)
         artists.push({
-            name: e.songName,
+            name: e.target.songName.value,
             songs: []
         })
     }
