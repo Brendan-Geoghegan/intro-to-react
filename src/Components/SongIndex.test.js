@@ -7,7 +7,7 @@
  import { screen, render } from '@testing-library/react';
  import userEvent from '@testing-library/user-event';
 
- import SongIndex from './SongIndex';
+ import SongIndex from './SongIndex/index.js';
 
 
  describe("SongIndex component", () => {
