@@ -1,46 +1,21 @@
 import React, { useState } from "react";
+import { Routes, Route } from 'react-router-dom'
 
-// import ArtistIndex from "./Components/ArtistIndex";
-import { ArtistIndex, SongIndex, SongForm } from "./Components";
-// import SongIndex from "./Components/SongIndex";
+import { ArtistPage, Home, NotFound } from "./pages";
+import { Header, Footer } from "./layouts";
 
 
 const App = () => {
 
-    const [artists, setArtists] = useState([
-        {name: "Boy Pablo", genre: "Indie", intro: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium aliquid quod officia repudiandae aperiam facere voluptas voluptatibus inventore dolorem, maxime minima delectus nostrum cum doloribus. Incidunt dolorem ex eius accusantium.", songs: [{songName: "Feeling Lonely", releaseDate: "18/12/19", coverArt: "./images/feelinglonely.jpg"}, {songName: "Feeling Lonely", releaseDate: "18/12/19", coverArt: "./images/feelinglonely.jpg"}]},
-        {name: "The Magic Gang", genre: "Indie Rock", intro: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium aliquid quod officia repudiandae aperiam facere voluptas voluptatibus inventore dolorem, maxime minima delectus nostrum cum doloribus. Incidunt dolorem ex eius accusantium.", songs: []},
-        {name: "Dutch Criminal Record", genre: "Indie Rock", intro: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium aliquid quod officia repudiandae aperiam facere voluptas voluptatibus inventore dolorem, maxime minima delectus nostrum cum doloribus. Incidunt dolorem ex eius accusantium.", songs: []},
-        {name: "The Amazons", genre: "Indie Rock", intro: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium aliquid quod officia repudiandae aperiam facere voluptas voluptatibus inventore dolorem, maxime minima delectus nostrum cum doloribus. Incidunt dolorem ex eius accusantium.", songs: []}
-    ])
-
-
-    const renderSongs = (songs) => {
-        console.log(songs);
-        return songs.map(song => 
-        <>
-        <SongIndex songName={song.songName} releaseDate={song.releaseDate} coverArt={song.coverArt}/>
-        </>
-        )
-    }
-    
-
-    const renderArtists = () => {
-        console.log(artists);
-        return artists.map(artist => 
-        <>
-        <ArtistIndex name={artist.name} genre={artist.genre} intro={artist.intro} />
-        {renderSongs(artist.songs)}
-        <SongForm artist={artist} setArtists={setArtists}/>
-        </>
-    )
-    }
-
-    
-
     return(
         <>
-        {renderArtists()}
+        <Header/>
+        <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/artists" element={<ArtistPage/>}></Route>
+        <Route path="*" element={<NotFound/>}></Route>
+        </Routes>
+        <Footer/>
         </>
     )
 }
