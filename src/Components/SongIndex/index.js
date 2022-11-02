@@ -44,6 +44,7 @@ return(
     <h2>Song: {songName}</h2>
     <p role="figure">Release date: {releaseDate}</p>
     <img src={coverArt} alt={songName}/>
+    <br/>
     <button style={{color: color}} onClick={() => likeOrUnlike()}>{like}</button>
     <h3>Lyrics</h3>
     <p role="article">{lyrics}</p>
