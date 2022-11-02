@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import { Link, Outlet } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-// import ArtistIndex from "./Components/ArtistIndex";
-import { ArtistIndex, SongIndex, SongForm } from "../../Components";
-// import SongIndex from "./Components/SongIndex";
+import { ArtistIndex } from '../../Components';
 
-
-const ArtistPage = () => {
+export default function IndividualArtist() {
 
     const [artists, setArtists] = useState([
         {name: "Boy Pablo", genre: "Indie", intro: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium aliquid quod officia repudiandae aperiam facere voluptas voluptatibus inventore dolorem, maxime minima delectus nostrum cum doloribus. Incidunt dolorem ex eius accusantium.", songs: [{songName: "Feeling Lonely", releaseDate: "18/12/19", coverArt: "./images/feelinglonely.jpg"}, {songName: "Feeling Lonely", releaseDate: "18/12/19", coverArt: "./images/feelinglonely.jpg"}]},
@@ -15,45 +12,28 @@ const ArtistPage = () => {
         {name: "The Amazons", genre: "Indie Rock", intro: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium aliquid quod officia repudiandae aperiam facere voluptas voluptatibus inventore dolorem, maxime minima delectus nostrum cum doloribus. Incidunt dolorem ex eius accusantium.", songs: []}
     ])
 
+    const [filteredArtist, setFilteredArtist] = useState([{}])
 
-    const renderSongs = (songs) => {
-        console.log(songs);
-        return songs.map(song => 
-        <>
-        <SongIndex songName={song.songName} releaseDate={song.releaseDate} coverArt={song.coverArt}/>
-        </>
-        )
-    }
-    
+    const params = useParams();
 
-    const renderArtists = () => {
-        console.log(artists);
-        return artists.map(artist => 
-        <>
-        <ArtistIndex name={artist.name} genre={artist.genre} intro={artist.intro} />
-        {renderSongs(artist.songs)}
-        <SongForm artist={artist} setArtists={setArtists}/>
-        </>
-    )
+    const newArtist = artists.filter((artist) => artist.name == params.name)
+    console.log(newArtist[0]);
+
+    const findArtist = () => {
+      console.log(params);
+        setFilteredArtist(artists.filter((artist) => artist.name == params.name));
     }
 
-    const linkArtistNames = () => {
-        return artists.map(artist =>
-            <>
-                <br/>
-                <Link to={artist.name}>{artist.name}</Link>
-            </>
-            )
-    }
 
     
+    useEffect(() => {
+        console.log("filteredArtist");
+        findArtist()
+        console.log(filteredArtist);
+    }, [params])
 
-    return(
-        <>
-        {linkArtistNames()}
-        <Outlet/>
-        </>
-    )
+
+  return (
+    <ArtistIndex name={filteredArtist[0].name} genre={filteredArtist[0].genre} intro={filteredArtist[0].intro}/>
+  )
 }
-
-export default ArtistPage

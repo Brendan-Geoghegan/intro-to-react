@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <ul>
       <li><NavLink className={activeClass} to="/">Home</NavLink></li>
-      <li><NavLink className={activeClass} to="/artists">People</NavLink></li>
+      <li><NavLink className={activeClass} to="/artists">Artists</NavLink></li>
     </ul>
   )
 }
