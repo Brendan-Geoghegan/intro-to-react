@@ -3,8 +3,8 @@ import React from 'react'
 export default function SongForm({artist, setArtists}) {
 
     const createSong = (e, artistOfSong) => {
-        // console.log(artists[0])
-        console.log(artistOfSong.name);
+        console.log("Creating song")
+        console.log(artistOfSong);
         console.log(e.target.songName.value, e.target.releaseDate.value)
         setArtists(prev => prev.map((el) => {
             if (artistOfSong.name === el.name) {
@@ -15,7 +15,7 @@ export default function SongForm({artist, setArtists}) {
                         {
                             songName: e.target.songName.value,
                             releaseDate: e.target.releaseDate.value,
-                            coverArt: "./images/feelinglonely.jpg"
+                            coverArt: "../../images/feelinglonely.jpg"
                         }
                     ]
 

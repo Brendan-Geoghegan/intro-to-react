@@ -31,7 +31,7 @@ const SongIndex = ({songName, releaseDate, coverArt}) => {
     useEffect(() => {
         const timer = setInterval(() => {
             getLyrics()
-        }, 5000)
+        }, 10000000000)
 
         return () => {
             clearInterval(timer)
