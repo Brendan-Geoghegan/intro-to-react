@@ -15,7 +15,7 @@ export default function SongForm({artist, setArtists}) {
                         {
                             songName: e.target.songName.value,
                             releaseDate: e.target.releaseDate.value,
-                            coverArt: "../../images/feelinglonely.jpg"
+                            coverArt: e.target.coverArt.value,
                         }
                     ]
 
@@ -33,6 +33,7 @@ export default function SongForm({artist, setArtists}) {
         }}>
         <input type="text" placeholder="Song name" name="songName"></input>
         <input type="text" placeholder="Release date" name="releaseDate"></input>
+        <input type="text" placeholder="Cover art image address" name="coverArt"></input>
         <input type="submit"></input>
         </form>
     </div>
