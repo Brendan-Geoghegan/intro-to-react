@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+
 ul {
     display: flex;
     justify-content: space-evenly;
     list-style: none;
+    background-color:aqua;
+    border-radius: 30px;
+    color: black;
+}
+
+li {
+    font-family: 'Oswald';
 }
 
 .current {
-    color: greenyellow;
+    color: green;
 }

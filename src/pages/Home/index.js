@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import './home.css'
 
 export default function Home() {
   return (
-    <h1>Welcome to our music website!</h1>
+    <h1 className='homeHeader'>Welcome to our music website!</h1>
   )
 }
