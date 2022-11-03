@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 const ArtistPage = () => {
 
     // const [artists, setArtists] = useContext(ArtistContext)
-    const artists = useSelector(state => state)
+    const artists = useSelector(state => state.artists)
 
 
     // const renderSongs = (songs) => {

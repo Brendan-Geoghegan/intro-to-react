@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { asyncAddSong } from '../../actions';
+import { asyncAddSong, quickLoading } from '../../actions';
 
 export default function SongForm({artist, setArtists}) {
 
@@ -27,12 +27,15 @@ export default function SongForm({artist, setArtists}) {
     //     }))
     // }
 
+    const loading = useSelector(state => state.loading)
     const dispatch = useDispatch();
 
     function handleSubmit(e, artist) {
         console.log("submit", e.target.songName.value);
         console.log("submit", artist);
+        dispatch(quickLoading())
         dispatch(asyncAddSong(e, artist))
+
     }
 
   return (
