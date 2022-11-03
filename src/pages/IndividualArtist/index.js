@@ -4,9 +4,13 @@ import { ArtistContext } from '../../context/ArtistContext';
 
 import { ArtistIndex, SongIndex, SongForm } from '../../Components';
 
+import { useSelector } from 'react-redux';
+
 export default function IndividualArtist() {
 
-    const [artists, setArtists] = useContext(ArtistContext)
+    // const [artists, setArtists] = useContext(ArtistContext)
+    const artists = useSelector(state => state)
+
     console.log("artist songs", artists[0].songs[0]);
 
     const [filteredArtist, setFilteredArtist] = useState([{songs: [{}]}])
@@ -41,7 +45,7 @@ export default function IndividualArtist() {
     <>
     <ArtistIndex name={filteredArtist[0].name} genre={filteredArtist[0].genre} intro={filteredArtist[0].intro}/>
     {renderSongs(filteredArtist[0].songs)}
-    <SongForm artist={filteredArtist[0]} setArtists={setArtists}/>
+    <SongForm artist={filteredArtist[0]}/>
     </>
   )
 }
